@@ -1,0 +1,10 @@
+[
+  { "code": "US", "name": "United States", "shortName": "US", "flag": "us" },
+  { "code": "UK", "name": "United Kingdom", "shortName": "UK", "flag": "gb" },
+  { "code": "EU", "name": "Europe", "shortName": "EU", "flag": "eu" },
+  { "code": "JP", "name": "Japan", "shortName": "Japan", "flag": "jp" },
+  { "code": "CN", "name": "China", "shortName": "China", "flag": "cn" },
+  { "code": "KR", "name": "Korea", "shortName": "Korea", "flag": "kr" },
+  { "code": "AU", "name": "Australia", "shortName": "Australia", "flag": "au" },
+  { "code": "INTL", "name": "International", "shortName": "International", "flag": null }
+]

@@ -1,0 +1,289 @@
+{
+  "gender": "women",
+  "category": "dresses",
+  "version": "1.0",
+  "lastReviewed": "2026-10-09",
+  "sourceNote": "General, non-brand-specific estimates based on commonly published international sizing conventions. These figures have not been independently verified and must be checked against retailer charts before launch.",
+  "rows": [
+    {
+      "id": "women-dresses-xs",
+      "intl": "XS",
+      "sizes": {
+        "US": "0-2",
+        "UK": "4-6",
+        "EU": "32-34",
+        "JP": "5-7",
+        "CN": "155/80A",
+        "KR": "44",
+        "AU": "4-6",
+        "INTL": "XS"
+      },
+      "body": {
+        "bust": {
+          "min": 78,
+          "max": 83
+        },
+        "waist": {
+          "min": 60,
+          "max": 65
+        },
+        "hip": {
+          "min": 84,
+          "max": 89
+        },
+        "height": {
+          "min": 150,
+          "max": 158
+        },
+        "shoulder": {
+          "min": 35,
+          "max": 37
+        },
+        "sleeve": {
+          "min": 55,
+          "max": 57
+        }
+      }
+    },
+    {
+      "id": "women-dresses-s",
+      "intl": "S",
+      "sizes": {
+        "US": "4-6",
+        "UK": "8-10",
+        "EU": "36-38",
+        "JP": "9-11",
+        "CN": "160/84A",
+        "KR": "55",
+        "AU": "8-10",
+        "INTL": "S"
+      },
+      "body": {
+        "bust": {
+          "min": 84,
+          "max": 89
+        },
+        "waist": {
+          "min": 66,
+          "max": 71
+        },
+        "hip": {
+          "min": 90,
+          "max": 95
+        },
+        "height": {
+          "min": 155,
+          "max": 163
+        },
+        "shoulder": {
+          "min": 36,
+          "max": 38
+        },
+        "sleeve": {
+          "min": 56,
+          "max": 58
+        }
+      }
+    },
+    {
+      "id": "women-dresses-m",
+      "intl": "M",
+      "sizes": {
+        "US": "8-10",
+        "UK": "12-14",
+        "EU": "40-42",
+        "JP": "13-15",
+        "CN": "165/88A",
+        "KR": "66",
+        "AU": "12-14",
+        "INTL": "M"
+      },
+      "body": {
+        "bust": {
+          "min": 90,
+          "max": 95
+        },
+        "waist": {
+          "min": 72,
+          "max": 77
+        },
+        "hip": {
+          "min": 96,
+          "max": 101
+        },
+        "height": {
+          "min": 160,
+          "max": 168
+        },
+        "shoulder": {
+          "min": 37,
+          "max": 39
+        },
+        "sleeve": {
+          "min": 57,
+          "max": 59
+        }
+      }
+    },
+    {
+      "id": "women-dresses-l",
+      "intl": "L",
+      "sizes": {
+        "US": "12-14",
+        "UK": "16-18",
+        "EU": "44-46",
+        "JP": "17-19",
+        "CN": "170/92A",
+        "KR": "77",
+        "AU": "16-18",
+        "INTL": "L"
+      },
+      "body": {
+        "bust": {
+          "min": 96,
+          "max": 101
+        },
+        "waist": {
+          "min": 78,
+          "max": 84
+        },
+        "hip": {
+          "min": 102,
+          "max": 107
+        },
+        "height": {
+          "min": 165,
+          "max": 173
+        },
+        "shoulder": {
+          "min": 38,
+          "max": 40
+        },
+        "sleeve": {
+          "min": 58,
+          "max": 60
+        }
+      }
+    },
+    {
+      "id": "women-dresses-xl",
+      "intl": "XL",
+      "sizes": {
+        "US": "16-18",
+        "UK": "20-22",
+        "EU": "48-50",
+        "JP": "21-23",
+        "CN": "175/96A",
+        "KR": "88",
+        "AU": "20-22",
+        "INTL": "XL"
+      },
+      "body": {
+        "bust": {
+          "min": 102,
+          "max": 108
+        },
+        "waist": {
+          "min": 85,
+          "max": 91
+        },
+        "hip": {
+          "min": 108,
+          "max": 114
+        },
+        "height": {
+          "min": 168,
+          "max": 176
+        },
+        "shoulder": {
+          "min": 39,
+          "max": 41
+        },
+        "sleeve": {
+          "min": 59,
+          "max": 61
+        }
+      }
+    },
+    {
+      "id": "women-dresses-xxl",
+      "intl": "XXL",
+      "sizes": {
+        "US": "20-22",
+        "UK": "24-26",
+        "EU": "52-54",
+        "JP": "25-27",
+        "CN": "180/100A",
+        "KR": "99",
+        "AU": "24-26",
+        "INTL": "XXL"
+      },
+      "body": {
+        "bust": {
+          "min": 109,
+          "max": 115
+        },
+        "waist": {
+          "min": 92,
+          "max": 98
+        },
+        "hip": {
+          "min": 115,
+          "max": 121
+        },
+        "height": {
+          "min": 170,
+          "max": 178
+        },
+        "shoulder": {
+          "min": 40,
+          "max": 42
+        },
+        "sleeve": {
+          "min": 60,
+          "max": 62
+        }
+      }
+    },
+    {
+      "id": "women-dresses-xxxl",
+      "intl": "XXXL",
+      "sizes": {
+        "US": "24-26",
+        "UK": "28-30",
+        "EU": "56-58",
+        "JP": "29-31",
+        "CN": "185/104A",
+        "KR": "110",
+        "AU": "28-30",
+        "INTL": "XXXL"
+      },
+      "body": {
+        "bust": {
+          "min": 116,
+          "max": 122
+        },
+        "waist": {
+          "min": 99,
+          "max": 105
+        },
+        "hip": {
+          "min": 122,
+          "max": 128
+        },
+        "height": {
+          "min": 170,
+          "max": 178
+        },
+        "shoulder": {
+          "min": 41,
+          "max": 43
+        },
+        "sleeve": {
+          "min": 61,
+          "max": 63
+        }
+      }
+    }
+  ]
+}

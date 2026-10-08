@@ -1,0 +1,232 @@
+{
+  "gender": "women",
+  "category": "jeans",
+  "version": "1.0",
+  "lastReviewed": "2026-10-09",
+  "sourceNote": "General, non-brand-specific estimates based on commonly published international sizing conventions. These figures have not been independently verified and must be checked against retailer charts before launch.",
+  "rows": [
+    {
+      "id": "women-jeans-xs",
+      "intl": "XS",
+      "sizes": {
+        "US": "0-2",
+        "UK": "4-6",
+        "EU": "32-34",
+        "JP": "5-7",
+        "CN": "155/60A",
+        "KR": "44",
+        "AU": "4-6",
+        "INTL": "XS"
+      },
+      "body": {
+        "waist": {
+          "min": 60,
+          "max": 65
+        },
+        "hip": {
+          "min": 84,
+          "max": 89
+        },
+        "inseam": {
+          "min": 72,
+          "max": 78
+        },
+        "height": {
+          "min": 150,
+          "max": 158
+        }
+      }
+    },
+    {
+      "id": "women-jeans-s",
+      "intl": "S",
+      "sizes": {
+        "US": "4-6",
+        "UK": "8-10",
+        "EU": "36-38",
+        "JP": "9-11",
+        "CN": "160/64A",
+        "KR": "55",
+        "AU": "8-10",
+        "INTL": "S"
+      },
+      "body": {
+        "waist": {
+          "min": 66,
+          "max": 71
+        },
+        "hip": {
+          "min": 90,
+          "max": 95
+        },
+        "inseam": {
+          "min": 74,
+          "max": 80
+        },
+        "height": {
+          "min": 155,
+          "max": 163
+        }
+      }
+    },
+    {
+      "id": "women-jeans-m",
+      "intl": "M",
+      "sizes": {
+        "US": "8-10",
+        "UK": "12-14",
+        "EU": "40-42",
+        "JP": "13-15",
+        "CN": "165/68A",
+        "KR": "66",
+        "AU": "12-14",
+        "INTL": "M"
+      },
+      "body": {
+        "waist": {
+          "min": 72,
+          "max": 77
+        },
+        "hip": {
+          "min": 96,
+          "max": 101
+        },
+        "inseam": {
+          "min": 76,
+          "max": 82
+        },
+        "height": {
+          "min": 160,
+          "max": 168
+        }
+      }
+    },
+    {
+      "id": "women-jeans-l",
+      "intl": "L",
+      "sizes": {
+        "US": "12-14",
+        "UK": "16-18",
+        "EU": "44-46",
+        "JP": "17-19",
+        "CN": "170/72A",
+        "KR": "77",
+        "AU": "16-18",
+        "INTL": "L"
+      },
+      "body": {
+        "waist": {
+          "min": 78,
+          "max": 84
+        },
+        "hip": {
+          "min": 102,
+          "max": 107
+        },
+        "inseam": {
+          "min": 78,
+          "max": 84
+        },
+        "height": {
+          "min": 165,
+          "max": 173
+        }
+      }
+    },
+    {
+      "id": "women-jeans-xl",
+      "intl": "XL",
+      "sizes": {
+        "US": "16-18",
+        "UK": "20-22",
+        "EU": "48-50",
+        "JP": "21-23",
+        "CN": "175/76A",
+        "KR": "88",
+        "AU": "20-22",
+        "INTL": "XL"
+      },
+      "body": {
+        "waist": {
+          "min": 85,
+          "max": 91
+        },
+        "hip": {
+          "min": 108,
+          "max": 114
+        },
+        "inseam": {
+          "min": 78,
+          "max": 84
+        },
+        "height": {
+          "min": 168,
+          "max": 176
+        }
+      }
+    },
+    {
+      "id": "women-jeans-xxl",
+      "intl": "XXL",
+      "sizes": {
+        "US": "20-22",
+        "UK": "24-26",
+        "EU": "52-54",
+        "JP": "25-27",
+        "CN": "180/80A",
+        "KR": "99",
+        "AU": "24-26",
+        "INTL": "XXL"
+      },
+      "body": {
+        "waist": {
+          "min": 92,
+          "max": 98
+        },
+        "hip": {
+          "min": 115,
+          "max": 121
+        },
+        "inseam": {
+          "min": 78,
+          "max": 84
+        },
+        "height": {
+          "min": 170,
+          "max": 178
+        }
+      }
+    },
+    {
+      "id": "women-jeans-xxxl",
+      "intl": "XXXL",
+      "sizes": {
+        "US": "24-26",
+        "UK": "28-30",
+        "EU": "56-58",
+        "JP": "29-31",
+        "KR": "110",
+        "AU": "28-30",
+        "INTL": "XXXL"
+      },
+      "body": {
+        "waist": {
+          "min": 99,
+          "max": 105
+        },
+        "hip": {
+          "min": 122,
+          "max": 128
+        },
+        "inseam": {
+          "min": 78,
+          "max": 84
+        },
+        "height": {
+          "min": 170,
+          "max": 178
+        }
+      }
+    }
+  ]
+}

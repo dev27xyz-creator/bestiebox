@@ -1,0 +1,233 @@
+{
+  "gender": "men",
+  "category": "pants",
+  "version": "1.0",
+  "lastReviewed": "2026-10-09",
+  "sourceNote": "General, non-brand-specific estimates based on commonly published international sizing conventions. These figures have not been independently verified and must be checked against retailer charts before launch.",
+  "rows": [
+    {
+      "id": "men-pants-xs",
+      "intl": "XS",
+      "sizes": {
+        "US": "28-30",
+        "UK": "28",
+        "EU": "44-46",
+        "JP": "S",
+        "CN": "165/72A",
+        "KR": "28",
+        "AU": "28-30",
+        "INTL": "XS"
+      },
+      "body": {
+        "waist": {
+          "min": 70,
+          "max": 75
+        },
+        "hip": {
+          "min": 86,
+          "max": 91
+        },
+        "inseam": {
+          "min": 76,
+          "max": 82
+        },
+        "height": {
+          "min": 164,
+          "max": 170
+        }
+      }
+    },
+    {
+      "id": "men-pants-s",
+      "intl": "S",
+      "sizes": {
+        "US": "30-32",
+        "UK": "30",
+        "EU": "46-48",
+        "JP": "M",
+        "CN": "170/76A",
+        "KR": "30",
+        "AU": "30-32",
+        "INTL": "S"
+      },
+      "body": {
+        "waist": {
+          "min": 76,
+          "max": 81
+        },
+        "hip": {
+          "min": 92,
+          "max": 97
+        },
+        "inseam": {
+          "min": 78,
+          "max": 84
+        },
+        "height": {
+          "min": 170,
+          "max": 176
+        }
+      }
+    },
+    {
+      "id": "men-pants-m",
+      "intl": "M",
+      "sizes": {
+        "US": "32-34",
+        "UK": "32",
+        "EU": "48-50",
+        "JP": "L",
+        "CN": "175/80A",
+        "KR": "32",
+        "AU": "32-34",
+        "INTL": "M"
+      },
+      "body": {
+        "waist": {
+          "min": 82,
+          "max": 87
+        },
+        "hip": {
+          "min": 98,
+          "max": 103
+        },
+        "inseam": {
+          "min": 80,
+          "max": 86
+        },
+        "height": {
+          "min": 176,
+          "max": 182
+        }
+      }
+    },
+    {
+      "id": "men-pants-l",
+      "intl": "L",
+      "sizes": {
+        "US": "34-36",
+        "UK": "34",
+        "EU": "50-52",
+        "JP": "XL",
+        "CN": "180/84A",
+        "KR": "34",
+        "AU": "34-36",
+        "INTL": "L"
+      },
+      "body": {
+        "waist": {
+          "min": 88,
+          "max": 93
+        },
+        "hip": {
+          "min": 104,
+          "max": 109
+        },
+        "inseam": {
+          "min": 82,
+          "max": 88
+        },
+        "height": {
+          "min": 182,
+          "max": 188
+        }
+      }
+    },
+    {
+      "id": "men-pants-xl",
+      "intl": "XL",
+      "sizes": {
+        "US": "36-38",
+        "UK": "36",
+        "EU": "52-54",
+        "JP": "XXL",
+        "CN": "185/88A",
+        "KR": "36",
+        "AU": "36-38",
+        "INTL": "XL"
+      },
+      "body": {
+        "waist": {
+          "min": 94,
+          "max": 99
+        },
+        "hip": {
+          "min": 110,
+          "max": 115
+        },
+        "inseam": {
+          "min": 82,
+          "max": 88
+        },
+        "height": {
+          "min": 188,
+          "max": 194
+        }
+      }
+    },
+    {
+      "id": "men-pants-xxl",
+      "intl": "XXL",
+      "sizes": {
+        "US": "40-42",
+        "UK": "38",
+        "EU": "54-56",
+        "JP": "3L",
+        "CN": "190/92A",
+        "KR": "38",
+        "AU": "40-42",
+        "INTL": "XXL"
+      },
+      "body": {
+        "waist": {
+          "min": 100,
+          "max": 105
+        },
+        "hip": {
+          "min": 116,
+          "max": 121
+        },
+        "inseam": {
+          "min": 82,
+          "max": 88
+        },
+        "height": {
+          "min": 194,
+          "max": 200
+        }
+      }
+    },
+    {
+      "id": "men-pants-xxxl",
+      "intl": "XXXL",
+      "sizes": {
+        "US": "44-46",
+        "UK": "40",
+        "EU": "56-58",
+        "JP": "4L",
+        "CN": "195/96A",
+        "KR": "40",
+        "AU": "44-46",
+        "INTL": "XXXL"
+      },
+      "body": {
+        "waist": {
+          "min": 106,
+          "max": 111
+        },
+        "hip": {
+          "min": 122,
+          "max": 127
+        },
+        "inseam": {
+          "min": 82,
+          "max": 88
+        },
+        "height": {
+          "min": 200,
+          "max": 206
+        }
+      }
+    }
+  ]
+}

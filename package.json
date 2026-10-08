@@ -1,0 +1,39 @@
+{
+  "name": "bestiebox-size-tool",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "predev": "npm run generate:data",
+    "dev": "vite --host 0.0.0.0 --port 5000",
+    "build": "npm run generate:data && npm run validate:data && npm run generate:routes && vite build && vite build --ssr src/entry-server.tsx --outDir dist/server && node scripts/prerender.mjs",
+    "preview": "vite preview --host 0.0.0.0 --port 5000",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "generate:data": "tsx scripts/generate-data.ts",
+    "validate:data": "tsx scripts/validate-data.ts",
+    "generate:routes": "tsx scripts/generate-routes.ts"
+  },
+  "dependencies": {
+    "postcss": "^8.5.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.4",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^24.0.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^5.1.1",
+    "autoprefixer": "^10.4.20",
+    "jsdom": "^26.0.0",
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vite": "^6.4.0",
+    "vitest": "^5.0.3"
+  }
+}

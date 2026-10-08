@@ -1,0 +1,261 @@
+{
+  "gender": "men",
+  "category": "shirts",
+  "version": "1.0",
+  "lastReviewed": "2026-10-09",
+  "sourceNote": "General, non-brand-specific estimates based on commonly published international sizing conventions. These figures have not been independently verified and must be checked against retailer charts before launch.",
+  "rows": [
+    {
+      "id": "men-shirts-xs",
+      "intl": "XS",
+      "sizes": {
+        "US": "XS",
+        "UK": "34",
+        "EU": "44-46",
+        "JP": "S",
+        "CN": "165/84A",
+        "KR": "90",
+        "AU": "XS",
+        "INTL": "XS"
+      },
+      "body": {
+        "chest": {
+          "min": 82,
+          "max": 87
+        },
+        "waist": {
+          "min": 68,
+          "max": 73
+        },
+        "height": {
+          "min": 164,
+          "max": 170
+        },
+        "shoulder": {
+          "min": 42,
+          "max": 44
+        },
+        "sleeve": {
+          "min": 58,
+          "max": 60
+        }
+      }
+    },
+    {
+      "id": "men-shirts-s",
+      "intl": "S",
+      "sizes": {
+        "US": "S",
+        "UK": "36",
+        "EU": "46-48",
+        "JP": "M",
+        "CN": "170/88A",
+        "KR": "95",
+        "AU": "S",
+        "INTL": "S"
+      },
+      "body": {
+        "chest": {
+          "min": 88,
+          "max": 93
+        },
+        "waist": {
+          "min": 74,
+          "max": 79
+        },
+        "height": {
+          "min": 170,
+          "max": 176
+        },
+        "shoulder": {
+          "min": 44,
+          "max": 46
+        },
+        "sleeve": {
+          "min": 60,
+          "max": 62
+        }
+      }
+    },
+    {
+      "id": "men-shirts-m",
+      "intl": "M",
+      "sizes": {
+        "US": "M",
+        "UK": "38",
+        "EU": "48-50",
+        "JP": "L",
+        "CN": "175/92A",
+        "KR": "100",
+        "AU": "M",
+        "INTL": "M"
+      },
+      "body": {
+        "chest": {
+          "min": 94,
+          "max": 99
+        },
+        "waist": {
+          "min": 80,
+          "max": 85
+        },
+        "height": {
+          "min": 176,
+          "max": 182
+        },
+        "shoulder": {
+          "min": 46,
+          "max": 48
+        },
+        "sleeve": {
+          "min": 62,
+          "max": 64
+        }
+      }
+    },
+    {
+      "id": "men-shirts-l",
+      "intl": "L",
+      "sizes": {
+        "US": "L",
+        "UK": "40",
+        "EU": "50-52",
+        "JP": "XL",
+        "CN": "180/96A",
+        "KR": "105",
+        "AU": "L",
+        "INTL": "L"
+      },
+      "body": {
+        "chest": {
+          "min": 100,
+          "max": 105
+        },
+        "waist": {
+          "min": 86,
+          "max": 91
+        },
+        "height": {
+          "min": 182,
+          "max": 188
+        },
+        "shoulder": {
+          "min": 48,
+          "max": 50
+        },
+        "sleeve": {
+          "min": 64,
+          "max": 66
+        }
+      }
+    },
+    {
+      "id": "men-shirts-xl",
+      "intl": "XL",
+      "sizes": {
+        "US": "XL",
+        "UK": "42",
+        "EU": "52-54",
+        "JP": "XXL",
+        "CN": "185/100A",
+        "KR": "110",
+        "AU": "XL",
+        "INTL": "XL"
+      },
+      "body": {
+        "chest": {
+          "min": 106,
+          "max": 111
+        },
+        "waist": {
+          "min": 92,
+          "max": 97
+        },
+        "height": {
+          "min": 188,
+          "max": 194
+        },
+        "shoulder": {
+          "min": 50,
+          "max": 52
+        },
+        "sleeve": {
+          "min": 66,
+          "max": 68
+        }
+      }
+    },
+    {
+      "id": "men-shirts-xxl",
+      "intl": "XXL",
+      "sizes": {
+        "US": "XXL",
+        "UK": "44",
+        "EU": "54-56",
+        "JP": "3L",
+        "CN": "190/104A",
+        "KR": "115",
+        "AU": "XXL",
+        "INTL": "XXL"
+      },
+      "body": {
+        "chest": {
+          "min": 112,
+          "max": 117
+        },
+        "waist": {
+          "min": 98,
+          "max": 103
+        },
+        "height": {
+          "min": 194,
+          "max": 200
+        },
+        "shoulder": {
+          "min": 52,
+          "max": 54
+        },
+        "sleeve": {
+          "min": 68,
+          "max": 70
+        }
+      }
+    },
+    {
+      "id": "men-shirts-xxxl",
+      "intl": "XXXL",
+      "sizes": {
+        "US": "XXXL",
+        "UK": "46",
+        "EU": "56-58",
+        "JP": "4L",
+        "CN": "195/108A",
+        "KR": "120",
+        "AU": "3XL",
+        "INTL": "XXXL"
+      },
+      "body": {
+        "chest": {
+          "min": 118,
+          "max": 123
+        },
+        "waist": {
+          "min": 104,
+          "max": 109
+        },
+        "height": {
+          "min": 200,
+          "max": 206
+        },
+        "shoulder": {
+          "min": 54,
+          "max": 56
+        },
+        "sleeve": {
+          "min": 70,
+          "max": 72
+        }
+      }
+    }
+  ]
+}

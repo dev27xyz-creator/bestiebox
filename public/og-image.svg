@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" rx="0" fill="#f5f7fc"/>
+  <circle cx="1010" cy="120" r="150" fill="#e7f2ff"/>
+  <circle cx="1080" cy="555" r="160" fill="#f6e8ef"/>
+  <rect x="100" y="92" width="88" height="88" rx="24" fill="#2869c4"/>
+  <path d="M127 115h35v10h-25v12h23v10h-23v14h25v10h-35z" fill="#fff"/>
+  <circle cx="174" cy="112" r="7" fill="#f4bd70"/>
+  <text x="100" y="285" fill="#1d2f50" font-family="Arial, sans-serif" font-size="68" font-weight="700">Clothing sizes,</text>
+  <text x="100" y="365" fill="#2869c4" font-family="Arial, sans-serif" font-size="68" font-weight="700">made comparable.</text>
+  <text x="100" y="435" fill="#52627b" font-family="Arial, sans-serif" font-size="28">Compare international sizes with body measurements.</text>
+  <rect x="100" y="495" width="153" height="48" rx="16" fill="#e7f2ff"/>
+  <text x="122" y="527" fill="#2058a6" font-family="Arial, sans-serif" font-size="22" font-weight="700">US M</text>
+  <path d="M277 519h55" stroke="#8ba6c9" stroke-width="5" stroke-linecap="round"/>
+  <path d="m323 508 12 11-12 11" fill="none" stroke="#8ba6c9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="355" y="495" width="178" height="48" rx="16" fill="#f6e8ef"/>
+  <text x="377" y="527" fill="#9d4160" font-family="Arial, sans-serif" font-size="22" font-weight="700">EU 48–50</text>
+  <text x="100" y="589" fill="#708099" font-family="Arial, sans-serif" font-size="20">bestiebox.site</text>
+</svg>

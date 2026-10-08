@@ -1,0 +1,315 @@
+# BUILD PROMPT: BestieBox.site — Clothing Size Comparison Tool (v2)
+
+You are a senior front-end engineer and product designer. Build a production-ready, static, **English-only** **Clothing Size Comparison Tool** for **BestieBox.site**. Deliver complete, working code, not outlines or pseudo-code. Where something is ambiguous, pick a sensible default, note it briefly, and keep going.
+
+---
+
+## 1. Product Summary
+
+BestieBox is a **comparison + size-finder tool**, not a static size-chart page. Three modes:
+
+1. **Convert**: e.g. US M to EU 48–50, always shown with real body measurements.
+2. **Find My Size**: user enters body measurements, tool estimates sizes in every system.
+3. **Compare**: side-by-side view, e.g. US M vs EU 48 vs JP L, with measurement rows.
+
+Also: cm / inch toggle, shareable PNG size card, mobile-first, no signup, no database, no API.
+
+**Honesty principle:** conversions are approximate. Every result shows: *"Approximate conversion. For the most accurate fit, compare your body measurements with the retailer's size chart."* Never present conversions as exact.
+
+---
+
+## 2. Hard Design Rules
+
+### 2.1 No emoji anywhere
+- **Do not use emoji** in the UI, share card, page titles, meta tags, or code comments shown to users.
+- Use **solid, colorful SVG icons** instead (see 2.2). Flags must be real SVG flags, not flag emoji (Windows does not render flag emoji).
+
+### 2.2 Icon system
+- Build a small in-house icon set as React components in `/src/components/icons/`, using **inline SVG with solid fills** (filled shapes, optionally a lighter secondary tone for depth). No outline-only icons, no icon fonts, no external icon CDN.
+- Each clothing category gets its own **color**, used consistently for the icon tile, active chip state and result accents:
+
+| Category | Icon | Suggested color |
+|---|---|---|
+| T-shirts | t-shirt | Sky blue |
+| Shirts | button shirt | Indigo |
+| Jeans | jeans | Deep blue / navy |
+| Pants | trousers | Teal |
+| Dresses | dress | Pink / rose |
+| Jackets | jacket | Orange |
+
+- Mode tabs, buttons and UI actions also use solid colorful icons: Convert (swap arrows), Find My Size (measuring tape), Compare (two columns), Download (down arrow), Copy (clipboard), Unit toggle (ruler), Info (circle-i), Swap (double arrow).
+- Icons sit inside **rounded-square color tiles** (soft tint background + solid icon) for a friendly, consistent look. Include accessible names (`aria-hidden` for decorative icons, labels on buttons).
+- **Flags:** use the `country-flag-icons` package (inline SVG, tree-shaken) or equivalent SVG assets for US, GB, EU, JP, CN, KR, AU. For the "International" letter system, use a neutral globe icon.
+- Define the palette as design tokens in `tailwind.config` so colors are changed in one place.
+
+### 2.3 Clean, minimal UI
+- One focused task per screen. A single centered card (max width ~960px) holds the tool; generous whitespace; soft rounded corners (12–16px); subtle shadows; no clutter.
+- Typography: one clean sans-serif (e.g. Inter via self-hosted font or system stack), clear hierarchy, 16px minimum body text.
+- Neutral background (near-white / very light gray) with one primary brand color and the category accent colors above. Support dark mode via `prefers-color-scheme` plus a small manual toggle.
+- No pop-ups, no auto-playing anything, no sticky banners. Results appear instantly beneath the controls with a gentle fade (respect `prefers-reduced-motion`).
+- Mobile-first: large touch targets (min 44px), single-column on phones, two-column controls on desktop.
+- Page sections kept lean: header, tool card, a short "How it works / accuracy" strip, FAQ (collapsed), footer. Nothing else.
+
+---
+
+## 3. Tech Stack (fixed)
+
+- **React 18 + TypeScript + Vite**, **Tailwind CSS**
+- **React Router** with every route **pre-rendered to static HTML** (use `vite-react-ssg` or equivalent) so each SEO page ships real content and meta tags
+- **Static JSON** data bundled at build time. No backend, no database, no API calls.
+- **localStorage** only for: preferred unit (cm/in), preferred "from" system, recently used sizes. Wrap in try/catch; the app must work if storage is blocked.
+- **Canvas API** (or `html-to-image`) for the PNG share card
+- **Vitest** + React Testing Library for the conversion engine
+- Deploy: **Cloudflare Pages** (include build command, output dir, `_headers`, `_redirects`)
+- No cookies or trackers in the base build. Leave one clearly marked, empty slot each for analytics and ads.
+
+**Language:** English only. Do NOT build i18n, locale routing, hreflang, translated routes, or a language switcher. Keep all UI copy in plain English inside components (or one `copy.ts` constants file for easy later extraction), but do not add translation infrastructure.
+
+---
+
+## 4. Scope: Version 1
+
+**Genders:** Men, Women. (Kids and Shoes are NOT in v1, but the schema and routing must make adding them trivial.)
+
+**Categories:** T-shirts, Shirts, Jeans, Pants, Dresses (women), Jackets
+
+**Systems:** US, UK, EU, Japan, China, Korea, Australia, plus the "International" letter system (XS–XXXL). The system list is data-driven so more countries (France, Italy, Germany, Canada, NZ) can be added without code changes.
+
+**Features (all required):**
+- Size conversion with measurement table
+- Measurement-based size finder
+- cm / inch toggle (global, persisted)
+- Side-by-side comparison (2–4 columns)
+- Shareable size card (Download PNG + Copy as text)
+- Mobile-first, accessible UI
+- No signup, no database, no API
+
+---
+
+## 5. Data Architecture
+
+Static JSON in `/src/data/`, fully typed:
+
+```
+systems.json
+mens-tops.json        mens-shirts.json      mens-jeans.json
+mens-pants.json       mens-jackets.json
+womens-tops.json      womens-dresses.json   womens-jeans.json
+womens-pants.json     womens-jackets.json
+```
+
+```ts
+type SystemCode = 'US'|'UK'|'EU'|'JP'|'CN'|'KR'|'AU'|'INTL'; // extendable
+type Gender = 'men'|'women';                                  // extendable
+type Category = 'tops'|'shirts'|'jeans'|'pants'|'dresses'|'jackets';
+
+interface Range { min: number; max: number }   // always stored in CM
+
+interface SizeRow {
+  id: string;
+  intl: 'XS'|'S'|'M'|'L'|'XL'|'XXL'|'XXXL';
+  sizes: Partial<Record<SystemCode, string>>;  // { US:'M', UK:'38', EU:'48-50', JP:'L', ... }
+  body: {
+    chest?: Range; bust?: Range; waist?: Range; hip?: Range;
+    height?: Range; inseam?: Range; shoulder?: Range; sleeve?: Range;
+  };
+}
+
+interface SizeDataset {
+  gender: Gender; category: Category;
+  version: string; lastReviewed: string; sourceNote: string;
+  rows: SizeRow[];
+}
+```
+
+**Data rules**
+- Store measurements **only in cm**; convert to inches at render time (1 in = 2.54 cm, round to nearest 0.5 in).
+- Seed with generally published, commonly accepted size ranges. Do **not** fabricate brand-specific data or copy any third-party chart verbatim. Mark every dataset with `sourceNote` and `lastReviewed`.
+- Write `DATA_README.md` explaining the schema and how to edit data, with a clear reminder that figures must be verified before launch.
+- Add `npm run validate:data` that fails the build on: `min > max`, non-monotonic ranges across sizes, unknown system codes, missing `intl` anchor, or duplicate row ids.
+
+---
+
+## 6. Engine (pure functions in `/src/lib/engine.ts`, fully unit-tested)
+
+```ts
+convertSize({gender, category, from, size, to}): ConversionResult
+findSizeFromMeasurements({gender, category, measurements, unit}): FinderResult
+compareSizes(selections, gender, category): ComparisonResult
+formatRange(range, unit): string
+```
+
+- **convertSize:** normalize input (case, whitespace, en/em dash, "US 8" vs "8"). If a source size matches several rows, return all candidates. Return the target size, the full row, body measurements and a `confidence` value (`exact-row | range | approximate`).
+- **findSizeFromMeasurements:** match each required measurement (tops: chest/bust + waist; bottoms: waist + hip; dresses: bust + waist + hip). If measurements land in different rows, recommend the **larger** size for the primary dimension and show a "between sizes" note with both neighbors. Never silently average. If out of range, return the nearest size with a clear message. Validate inputs (numeric, positive, sane bounds) with friendly inline errors.
+- Missing mapping for a system shows a dash with a short explanation.
+- **Tests:** minimum 40 Vitest cases covering unit rounding, boundary values at row edges, overlapping ranges, between-size results, missing mappings and unknown input.
+
+---
+
+## 7. UI Specification
+
+### 7.1 Layout
+- **Header:** BestieBox logo, unit toggle (cm / in), dark-mode toggle.
+- **Hero:** H1 "Clothing Size Comparison Tool" + one-line subtitle.
+- **Mode tabs** (accessible `role="tablist"`): Convert, Find My Size, Compare, each with its solid colorful icon.
+
+### 7.2 Convert mode
+Controls:
+1. Gender: segmented control (Men / Women)
+2. Category: row of **icon tiles** (one per category, in its accent color; selected tile gets a solid colored background with a white icon)
+3. From: flag + system, then size dropdown
+4. Swap button between From and To
+5. To: flag + system
+
+Result:
+- Headline with flags: **[US flag] US M ≈ [EU flag] EU 48–50**
+- **Measurement comparison table** (key feature):
+
+| Measurement | US M | EU 48–50 |
+|---|---|---|
+| Chest | 38–40 in | 96–100 cm |
+| Waist | 32–34 in | 81–86 cm |
+
+  Unit toggle applies to **all columns consistently**; missing values show a dash.
+- Collapsible "See this size in every system".
+- Accuracy note + actions: **Copy sizes**, **Download size card**, **Compare with another size**.
+
+### 7.3 Find My Size mode
+- Inputs: gender, category, relevant measurements (chest/bust, waist, hips, optional height/inseam), unit toggle.
+- Collapsible "How to measure" with simple inline SVG diagrams.
+- Result: estimated size in every system, a "between sizes" notice when needed, and the matched ranges so users see why.
+- Same Copy / Download actions.
+
+### 7.4 Compare mode
+- 2–4 columns, each with system + size selectors.
+- Table: sizes per system, then each measurement row, with **differences highlighted** as small badges (e.g. "+2 cm" versus the first column).
+- Mobile: horizontal scroll with a sticky first column.
+
+### 7.5 Share card
+Client-side PNG (1080×1350), clean layout in brand colors:
+
+```
+MY CLOTHING SIZES
+[US flag]  US    M
+[UK flag]  UK    38
+[EU flag]  EU    48-50
+[JP flag]  JP    L
+Chest   96-100 cm
+Waist   81-86 cm
+bestiebox.site
+```
+- Draw flags and icons as **SVG**, never emoji. Embed or use a safe system font stack so the PNG renders identically on all devices.
+- **Copy as text** to clipboard with graceful fallback. Optional Web Share API button when supported.
+
+### 7.6 Accessibility
+- Semantic HTML, labelled inputs, visible focus rings, ARIA for tabs, `aria-live="polite"` on results, meaning never conveyed by color alone, full keyboard operation, WCAG AA contrast (check all category accent colors against their backgrounds).
+
+### 7.7 Performance
+- Target Lighthouse mobile at least 95 on Performance, Accessibility, Best Practices and SEO. No layout shift, no heavy libraries, code-split by route, self-hosted fonts.
+
+---
+
+## 8. Routing & SEO (English only)
+
+Pre-render every route with a unique `<title>`, meta description, canonical, Open Graph / Twitter tags and JSON-LD.
+
+**Hub and tool pages**
+```
+/                              main tool (all three modes)
+/clothing-size-converter
+/mens-size-converter
+/womens-size-converter
+/tshirt-size-converter
+/shirt-size-converter
+/jeans-size-converter
+/dress-size-converter
+/jacket-size-converter
+/find-my-clothing-size
+/compare-clothing-sizes
+/how-we-calculate
+```
+
+**Country-pair pages** (generated from data)
+```
+/us-to-eu-clothing-size      /us-to-uk-clothing-size     /us-to-japan-clothing-size
+/uk-to-eu-clothing-size      /eu-to-us-clothing-size     /eu-to-uk-clothing-size
+(+ remaining pairs from the system list)
+```
+
+**Specific-size pages** (programmatically generated from data), e.g. `/us-size-m-to-eu`, `/us-8-to-eu`, `/uk-12-to-eu`, `/eu-40-to-us`. Each must have **unique, useful content**: pre-filled converter, measurement table, neighboring sizes, a short plain-language explanation and 3–5 FAQ items generated from the data. Avoid thin or duplicate pages. Provide a generator script, prioritize sensibly, and report the total page count.
+
+**Technical SEO:** `sitemap.xml` generated at build, `robots.txt`, JSON-LD (`WebApplication`, `FAQPage` where FAQs exist, `BreadcrumbList`), breadcrumbs, internal links between hub, pair and size pages, one H1 per page, a 404 page, consistent trailing slashes.
+
+---
+
+## 9. Trust Content
+
+- `/how-we-calculate`: explains approximate nature, data sources, review date and limitations (brand, cut, country variation).
+- Show "Data last reviewed: {date}" on tool pages.
+- Short privacy note: everything runs in the browser; only unit/system preferences are stored locally.
+
+---
+
+## 10. Monetization-Ready (structure only)
+
+- One reserved, fixed-height ad slot below the result and one in the footer area, controlled by `ADS_ENABLED=false` (default) so there is no layout shift and the UI stays clean.
+- Optional affiliate block ("Shop {category} in your size") driven by config, empty by default, always labelled "Affiliate link".
+
+---
+
+## 11. Future-Proofing (design for it, don't build it)
+
+- **Kids** (US/UK/EU kids, age, height) and **Shoes** added by dropping in a JSON file plus a config entry.
+- **Brand-to-brand comparison** planned via `brands/{brand}.json`, with the required copy "Approximate equivalent. Check the brand's measurement chart before ordering." Use only the brand's published charts where usage permits.
+- **Languages** can be added later; keep copy centralized so extraction is easy, but build nothing for it now.
+
+---
+
+## 12. Deliverables
+
+```
+bestiebox/
+  package.json, vite.config.ts, tsconfig.json, tailwind.config.ts
+  /public (favicon set, og-image, robots.txt)
+  /scripts (validate-data.ts, generate-routes.ts, generate-sitemap.ts)
+  /src
+    /components (Tabs, Selector, CategoryTiles, MeasurementTable, ResultCard,
+                 CompareTable, ShareCard, UnitToggle, FAQ, AdSlot, AffiliateBlock, Seo)
+    /components/icons (category, UI and flag icon components)
+    /pages  /lib  /data  /styles  /types
+  /tests
+  README.md, DATA_README.md, DEPLOY.md
+```
+
+- **README.md:** install, dev, build, test, validate data, add a size system or category.
+- **DEPLOY.md:** Cloudflare Pages steps (build command, output dir, Node version, custom domain bestiebox.site, headers, redirects, caching).
+- **Launch checklist:** data review, contrast check, Lighthouse run, Search Console submission, sitemap, schema validation.
+
+---
+
+## 13. Acceptance Criteria
+
+- [ ] No emoji anywhere in the UI, share card, titles or meta; all icons are solid colorful SVG; flags are SVG
+- [ ] Each category has a consistent accent color across tile, active state and result
+- [ ] Three modes work end-to-end with zero network requests after load
+- [ ] cm / in toggle updates every measurement everywhere and persists
+- [ ] US M to EU shows the size **and** the measurement table
+- [ ] Find My Size returns sizes in every system with "between sizes" handling
+- [ ] Compare shows 2–4 sizes with highlighted differences
+- [ ] PNG share card downloads correctly on desktop and mobile with flags rendering reliably
+- [ ] All routes pre-render with unique titles/meta, canonical and JSON-LD
+- [ ] English only; no i18n or locale code present
+- [ ] `npm run validate:data` and `npm test` pass with at least 40 engine tests
+- [ ] Lighthouse mobile at least 95 across all four categories
+- [ ] Approximate-conversion note visible on every result
+- [ ] UI is visibly clean: single centered tool card, generous whitespace, no clutter
+
+---
+
+## 14. How to Work
+
+1. Start with a **brief architecture plan** (folder tree, data flow, route generation, page-count estimate). Don't ask questions unless truly blocked.
+2. Build in order: data schema and validation, engine and tests, icon set and design tokens, UI components, the three modes, share card, routing/SEO/pre-render, sitemap/schema, docs.
+3. Provide **complete file contents** for every file. No "rest of code here" placeholders.
+4. After each stage, run the checks (tests, build) and fix failures before moving on.
+5. End with a summary: what was built, assumptions made, data that needs human verification before launch, and suggested next steps (kids, shoes, brand pages, then languages) ranked by likely search value.
